@@ -1,0 +1,50 @@
+package quiz3;
+
+public class Queue{
+    private linkedlist QueueList;
+
+    public Queue() {
+        QueueList=new linkedlist();
+        
+    }
+
+    public void enqueue(Object data) { // inserta un elemento al final de la lista
+        this.QueueList.insertlast(data);
+        
+    }
+    public Node dequeue() { // toma el elemento primer elemento y lo borra
+        return this.QueueList.deletefirst();
+        
+    }
+    public Node peek(){// toma el primer elemento sin borrarlo
+        return this.QueueList.getHead();
+    }
+
+    public void recorrer() {
+        this.QueueList.recorrer();
+        
+    }
+
+    public static void main(String[] args) {
+        Queue queue=new Queue();
+
+        queue.enqueue(5);
+        queue.enqueue(8);
+        queue.enqueue(3);
+        queue.enqueue(12);
+        queue.enqueue(0); 
+        queue.enqueue(89);
+        queue.enqueue(77);
+        queue.dequeue();
+        queue.dequeue();
+        queue.dequeue();
+
+        queue.recorrer();
+        /* 
+        al desencolar 3 elementos se deben ir los 3 primeros elementos que se agregaron, en este caso esos elementos son 
+        los números 5,8 y 3, los resultados obtenidos al desencolar son los esperados, por lo cual el programa funciona correctamente
+        */
+
+    }
+    
+}
