@@ -1,0 +1,74 @@
+package quiz3;
+
+public class linkedlist{
+    private Node head;
+    private Node last;
+    private int size;
+
+    public void linkedlist() {
+        this.head=null;
+        this.last=null;
+        this.size=0;
+        
+    }
+
+    public boolean empty() { //indica si la lista seencuentra vacía
+        return (this.head==null && this.last==null);
+    }
+    public int size() {
+        return this.size;
+        
+    }
+    public void insertfirts(Object data) { //inserta un elemento al inicio de la lista
+        Node newNode = new Node(data);
+        if (this.head==null && this.last==null){
+            this.head=newNode;
+            this.last=newNode;
+        }else{
+        newNode.next = this.head; // el elemento siguiente de la nueva cabeza es la vieja cabeza
+        this.head.prev=newNode; //el elemento previo de la antigua cabeza es la nueva cabeza
+        this.head = newNode; // convierto el nuevo elemento en la cabeza
+        this.size++;}
+        }
+
+    public void insertlast(Object data) { // este método añade elementos al final de la lista
+        Node newNode=new Node(data);
+        if(this.last==null && this.head==null){
+            this.last=newNode;
+            this.head=newNode;
+        }else{
+        newNode.prev=this.last;// al anterior al nuevo final es el viejo final
+        this.last.next=newNode; // al estar al final,sigue del viejo nodo final
+        this.last=newNode;// el nuevo nodo es el nuevo final
+        this.size++;}
+        }
+    
+    public Node deletefirst() { //borra el primer elemento
+        if(this.head != null){ // no puedo borrar si la lista esta vacía
+            Node temp=this.head; // creo un nodo temporal
+            this.head=this.head.next; // muevo la cabeza una posición 
+            this.head.prev=null; // elimino la conección entre la antigua cabeza y la nueva
+            this.size--;
+            return temp;}
+
+            else{return null;}
+        }
+    public Node getHead(){ // retorna la cabeza
+        if(this.head==null){
+            return null;
+        }else{return this.head;}
+        
+    }   
+    public void recorrer(){ //permite recorrer la lista
+        int i=1;
+        Node puntero=this.head; //creo un puntero parra que recorra la listas, inicia en la cabeza
+        while (puntero !=null){ // el final de la lista esta vacio
+            System.out.println(i+": " + puntero.getData()); //imprime el dato en donde se encuentra el puntero
+            puntero=puntero.next; //el puntero avanza al siguiente
+            i++;
+        }
+        
+
+    }
+
+}
